@@ -40,7 +40,98 @@ exports.dayFromDate = (date) => {
 }
 
 // travelling_suisse_robot
-exports.shortestPath = (start, end, graph) => {
+// currDirection: 1 = North, 2 = East, 3 = South, 4 = West
+exports.path = (start, end, currDirection) => {
+  let startRow = start[0];
+  let startCol = start[1];
+  let endRow = end[0];
+  let endCol = end[1];
 
+  let path = "";
+
+  function setDirection(goal) {
+    // set north
+    if (goal == 1) {
+      if (currDirection === 2) {
+        path += "L";
+      } else if (currDirection === 3) {
+        path += "RR";
+      } else if (currDirection === 4) {
+        path += "R";
+      }
+      currDirection = 1;
+    }
+    // set east
+    if (goal == 2) {
+      if (currDirection === 1) {
+        path += "R";
+      } else if (currDirection === 3) {
+        path += "L";
+      } else if (currDirection === 4) {
+        path += "RR";
+      }
+      currDirection = 2;
+    }
+    // set south
+    if (goal == 3) {
+      if (currDirection === 1) {
+        path += "RR";
+      } else if (currDirection === 2) {
+        path += "R";
+      } else if (currDirection === 4) {
+        path += "L";
+      }
+      currDirection = 3;
+    }
+    // set west
+    if (goal == 4) {
+      if (currDirection === 1) {
+        path += "L";
+      } else if (currDirection === 2) {
+        path += "RR";
+      } else if (currDirection === 3) {
+        path += "R";
+      }
+      currDirection = 4;
+    }
+  }
+
+  // need to move up
+  if (startRow > endRow) {
+    setDirection(1);
+    while (startRow !== endRow) {
+      startRow--;
+      path += "S";
+    }
+  }
+  // need to move down
+  if (startRow < endRow) {
+    setDirection(3);
+    while (startRow !== endRow) {
+      startRow++;
+      path += "S";
+    }
+  }
+  // need to move left
+  if (startCol > endCol) {
+    setDirection(4);
+    while (startCol !== endCol) {
+      startCol--;
+      path += "S";
+    }
+  }
+  // need to move right
+  if (startCol < endCol) {
+    setDirection(2);
+    while (startCol !== endCol) {
+      startCol++;
+      path += "S";
+    }
+  }
+
+  return [currDirection, path += "P"];
+};
+
+exports.shortestPath = (paths) => {
 
 };

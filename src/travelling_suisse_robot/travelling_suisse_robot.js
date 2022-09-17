@@ -1,5 +1,5 @@
 const e = require("express");
-const { shortestPath } = require("../utils/utils.js");
+const { path } = require("../utils/utils.js");
 
 exports.travelling_suisse_robot = (input) => {
     let inputItems = [...input];
@@ -35,6 +35,71 @@ exports.travelling_suisse_robot = (input) => {
     }
 
     // find path
+    let output = "";
+    let currDirection = 1; // start facing north
+    output += path(map.get("X"), map.get("C"), currDirection)[1] // go to C
+    currDirection = path(map.get("X"), map.get("C"), currDirection)[0]
 
-    console.log(map)
+    output += path(map.get("C"), map.get("O"), currDirection)[1] // go to O
+    currDirection = path(map.get("C"), map.get("O"), currDirection)[0]
+
+    output += path(map.get("O"), map.get("D"), currDirection)[1] // go to D
+    currDirection = path(map.get("O"), map.get("D"), currDirection)[0]
+
+    let prevNode = "";
+    let currNode = "";
+    let currPath = "";
+
+    // go to E
+    for (const [key, value] of map.entries()) {
+        if (key.includes("E")) {
+            let pathString = path(map.get("D"), map.get(key), currDirection)[1];
+            if (pathString.length < currPath.length || currPath == "") {
+                currNode = key;
+                currPath = pathString
+                currDirection = path(map.get("D"), map.get(key), currDirection)[0];
+            }
+        }
+    }
+    prevNode = currNode;
+    output += currPath;
+    currPath = "";
+
+    // go to I
+    for (const [key, value] of map.entries()) {
+        if (key.includes("I")) {
+            let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
+            if (pathString.length < currPath.length || currPath == "") {
+                currNode = key;
+                currPath = pathString
+                currDirection = path(map.get(prevNode), map.get(key), currDirection)[0];
+            }
+        }
+    }
+    prevNode = currNode;
+    output += currPath;
+    currPath = "";
+
+    output += path(map.get(prevNode), map.get("T"), currDirection)[1] // go to T
+    currDirection = path(map.get(prevNode), map.get("T"), currDirection)[0]
+
+    // go to S
+    for (const [key, value] of map.entries()) {
+        if (key.includes("S")) {
+            let pathString = path(map.get("T"), map.get(key), currDirection)[1];
+            if (pathString.length < currPath.length || currPath == "") {
+                currNode = key;
+                currPath = pathString
+                currDirection = path(map.get(prevNode), map.get(key), currDirection)[0];
+            }
+
+            console.log(currDirection)
+            console.log(pathString)
+        }
+    }
+    prevNode = currNode;
+    output += currPath;
+    currPath = "";
+
+    return output;
 }

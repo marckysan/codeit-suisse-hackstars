@@ -71,10 +71,7 @@ app.post("/calendarDays", (req, res) => {
 app.post("/rubiks", (req, res) => {
   const { ops, state } = req.body;
   const output = rubiks(ops, state);
-  const wrappedOutput = {
-    output: output,
-  };
-  res.json(wrappedOutput);
+  res.json(output);
 });
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

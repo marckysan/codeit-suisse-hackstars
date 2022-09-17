@@ -10,6 +10,7 @@ const { to_cumulative } = require("./src/ticker_stream/to_cumulative");
 const { to_cumulative_delayed } = require("./src/ticker_stream/to_cumulative_delayed");
 const { calendar_days_part1 } = require("./src/calendar_days/calendar_days_part1");
 const { calendar_days_part2 } = require("./src/calendar_days/calendar_days_part2");
+const { cryptocollapz } = require("./src/cryptocollapz/cryptocollapz");
 
 app.get("/test/get", (req, res) => {
   res.send("Get Endpoint is working");
@@ -37,6 +38,13 @@ app.post("/tickerStreamPart2", (req, res) => {
   };
   res.json(wrappedOutput);
 });
+
+// cryptocollapz
+app.post("/cryptocollapz", (req, res) => {
+  const { input } = req.body;
+  const output = cryptocollapz(input);
+  const wrappedOutput = {
+    output: output,
 
 // calendar_days
 app.post("/calendarDays", (req, res) => {

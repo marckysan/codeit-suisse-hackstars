@@ -1,10 +1,12 @@
 const express = require("express");
 const morganBody = require("morgan-body");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
-const app = express().use(express.json());
+const app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({ type: "application/json" }));
+app.use(bodyParser.text({ type: "text/plain" }));
 morganBody(app, { noColors: process.env.NODE_ENV === "production" });
-app.use(express.text())
 
 // function imports
 const { to_cumulative } = require("./src/ticker_stream/to_cumulative");

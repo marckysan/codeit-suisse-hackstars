@@ -1,8 +1,7 @@
 const { dateFromDay } = require("../utils/utils.js");
 
 exports.calendar_days_part1 = (numbers) => {
-  const input = numbers[0];
-  const inputItems = input.split(",");
+  const inputItems = numbers;
   const year = inputItems[0];
 
   let output = ""

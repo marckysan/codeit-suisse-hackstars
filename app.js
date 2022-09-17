@@ -1,9 +1,10 @@
 const express = require("express");
 const morganBody = require("morgan-body");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 const app = express().use(express.json());
 morganBody(app, { noColors: process.env.NODE_ENV === "production" });
+app.use(express.text())
 
 // function imports
 const { to_cumulative } = require("./src/ticker_stream/to_cumulative");
@@ -69,13 +70,10 @@ app.post("/rubiks", (req, res) => {
 
 // travelling_suisse_robot
 app.post("/travelling-suisse-robot", (req, res) => {
-  req.setHeader('content-type', 'text/plain');
-  const { input } = req.body;
+  const input = req.body;
   const output = travelling_suisse_robot(input);
-  const wrappedOutput = {
-    output: output,
-  };
-  res.json(wrappedOutput);
+  res.setHeader('content-type', 'text/plain');
+  res.send(output);
 });
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

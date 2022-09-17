@@ -45,9 +45,9 @@ exports.calendar_days_part1 = (stream) => {
     // special cases
     if (value.has(0) && value.has(1) && value.has(2) && value.has(3) && value.has(4) && value.has(5) && value.has(6)) {
       monthOutput = "alldays,";
-    } else if (value.has(1) && value.has(2) && value.has(3) && value.has(4) && value.has(5)) {
+    } else if (value.has(1) && value.has(2) && value.has(3) && value.has(4) && value.has(5) && !value.has(0) && !value.has(6)) {
       monthOutput = "weekday,";
-    } else if (value.has(0) && value.has(6)) {
+    } else if (value.has(0) && value.has(6) && !value.has(1) && !value.has(2) && !value.has(3) && !value.has(4) && !value.has(5)) {
       monthOutput = "weekend,";
     }
 

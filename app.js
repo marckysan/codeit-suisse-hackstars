@@ -50,10 +50,7 @@ app.post("/tickerStreamPart2", (req, res) => {
 app.post("/cryptocollapz", (req, res) => {
   const input = req.body;
   const output = cryptocollapz(input);
-  const wrappedOutput = {
-    output: output,
-  };
-  res.json(wrappedOutput);
+  res.json(output);
 });
 
 // calendar_days

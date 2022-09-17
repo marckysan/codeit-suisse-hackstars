@@ -4,6 +4,7 @@ const { to_cumulative } = require("./src/ticker_stream/to_cumulative");
 const {
   to_cumulative_delayed,
 } = require("./src/ticker_stream/to_cumulative_delayed");
+const { cryptocollapz } = require("./src/cryptocollapz/cryptocollapz");
 const PORT = process.env.PORT || 5000;
 
 const app = express().use(express.json());
@@ -29,6 +30,15 @@ app.post("/tickerStreamPart1", (req, res) => {
 app.post("/tickerStreamPart2", (req, res) => {
   const { stream, quantityBlock } = req.body;
   const output = to_cumulative_delayed(stream, quantityBlock);
+  const wrappedOutput = {
+    output: output,
+  };
+  res.json(wrappedOutput);
+});
+
+app.post("/cryptocollapz", (req, res) => {
+  const { input } = req.body;
+  const output = cryptocollapz(input);
   const wrappedOutput = {
     output: output,
   };

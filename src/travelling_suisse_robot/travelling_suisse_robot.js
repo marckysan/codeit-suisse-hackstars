@@ -10,7 +10,7 @@ exports.travelling_suisse_robot = (input) => {
 
     // fill graph
     for (let i = 0; i < inputItems.length; i++) {
-        if (inputItems[i] === "\\") {
+        if (inputItems[i] === "\n") {
             i++;
             graph.push(row);
             row = [];

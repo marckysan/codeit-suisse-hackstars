@@ -1,6 +1,6 @@
 const express = require("express");
 const morganBody = require("morgan-body");
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 const app = express().use(express.json());
 morganBody(app, { noColors: process.env.NODE_ENV === "production" });
@@ -17,6 +17,7 @@ const {
   calendar_days_part2,
 } = require("./src/calendar_days/calendar_days_part2");
 const { rubiks } = require("./src/rubiks/rubiks");
+const { cryptocollapz } = require("./src/cryptocollapz/cryptocollapz");
 
 app.get("/test/get", (req, res) => {
   res.send("Get Endpoint is working");
@@ -47,7 +48,7 @@ app.post("/tickerStreamPart2", (req, res) => {
 
 // cryptocollapz
 app.post("/cryptocollapz", (req, res) => {
-  const { input } = req.body;
+  const input = req.body;
   const output = cryptocollapz(input);
   const wrappedOutput = {
     output: output,

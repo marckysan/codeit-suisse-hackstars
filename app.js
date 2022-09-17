@@ -7,17 +7,12 @@ morganBody(app, { noColors: process.env.NODE_ENV === "production" });
 
 // function imports
 const { to_cumulative } = require("./src/ticker_stream/to_cumulative");
-const {
-  to_cumulative_delayed,
-} = require("./src/ticker_stream/to_cumulative_delayed");
-const {
-  calendar_days_part1,
-} = require("./src/calendar_days/calendar_days_part1");
-const {
-  calendar_days_part2,
-} = require("./src/calendar_days/calendar_days_part2");
+const { to_cumulative_delayed, } = require("./src/ticker_stream/to_cumulative_delayed");
+const { calendar_days_part1 } = require("./src/calendar_days/calendar_days_part1");
+const { calendar_days_part2 } = require("./src/calendar_days/calendar_days_part2");
 const { rubiks } = require("./src/rubiks/rubiks");
 const { cryptocollapz } = require("./src/cryptocollapz/cryptocollapz");
+const { travelling_suisse_robot } = require("./src/travelling_suisse_robot/travelling_suisse_robot");
 
 app.get("/test/get", (req, res) => {
   res.send("Get Endpoint is working");
@@ -70,6 +65,17 @@ app.post("/rubiks", (req, res) => {
   const { ops, state } = req.body;
   const output = rubiks(ops, state);
   res.json(output);
+});
+
+// travelling_suisse_robot
+app.post("/travelling-suisse-robot", (req, res) => {
+  req.setHeader('content-type', 'text/plain');
+  const { input } = req.body;
+  const output = travelling_suisse_robot(input);
+  const wrappedOutput = {
+    output: output,
+  };
+  res.json(wrappedOutput);
 });
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

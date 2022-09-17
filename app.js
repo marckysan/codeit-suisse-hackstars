@@ -48,4 +48,13 @@ app.post("/calendarDaysPart1", (req, res) => {
   res.json(wrappedOutput);
 });
 
+app.post("/calendarDaysPart2", (req, res) => {
+  const { stream } = req.body;
+  const output = calendar_days_part2(stream);
+  const wrappedOutput = {
+    output: output,
+  };
+  res.json(wrappedOutput);
+});
+
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

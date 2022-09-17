@@ -34,3 +34,7 @@ exports.dateFromDay = (year, day) => {
   var date = new Date(year, 0); // initialize a date in `year-01-01`
   return new Date(date.setDate(day)); // add the number of days
 }
+
+exports.dayFromDate = (date) => {
+  return (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000;
+}

@@ -1,9 +1,8 @@
-const { dayFromDate, dateFromDay } = require("../utils/utils.js");
+const { dayFromDate } = require("../utils/utils.js");
 
-exports.calendar_days_part2 = (stream) => {
-    const input = stream[0];
-    const newYear = 2001 + input.indexOf(' ');
-    const inputItems = input.split(",");
+exports.calendar_days_part2 = (outputPart1) => {
+    const newYear = 2001 + outputPart1.indexOf(' ');
+    const inputItems = outputPart1.split(",");
 
     let outputList = [newYear];
     let days = ['m', 't', 'w', 't', 'f', 's', 's'];

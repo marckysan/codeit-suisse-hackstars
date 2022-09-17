@@ -39,20 +39,13 @@ app.post("/tickerStreamPart2", (req, res) => {
 });
 
 // calendar_days
-app.post("/calendarDaysPart1", (req, res) => {
-  const { stream } = req.body;
-  const output = calendar_days_part1(stream);
+app.post("/calendarDays", (req, res) => {
+  const { numbers } = req.body;
+  const outputPart1 = calendar_days_part1(numbers);
+  const outputPart2 = calendar_days_part2(outputPart1);
   const wrappedOutput = {
-    output: output,
-  };
-  res.json(wrappedOutput);
-});
-
-app.post("/calendarDaysPart2", (req, res) => {
-  const { stream } = req.body;
-  const output = calendar_days_part2(stream);
-  const wrappedOutput = {
-    output: output,
+    part1: outputPart1,
+    part2: outputPart2
   };
   res.json(wrappedOutput);
 });

@@ -74,6 +74,7 @@ exports.path = (start, end, currDirection) => {
     }
     // set south
     if (goal == 3) {
+
       if (currDirection === 1) {
         path += "RR";
       } else if (currDirection === 2) {
@@ -130,8 +131,4 @@ exports.path = (start, end, currDirection) => {
   }
 
   return [currDirection, path += "P"];
-};
-
-exports.shortestPath = (paths) => {
-
 };

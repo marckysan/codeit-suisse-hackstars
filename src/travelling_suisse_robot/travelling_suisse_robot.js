@@ -49,6 +49,7 @@ exports.travelling_suisse_robot = (input) => {
     let prevNode = "";
     let currNode = "";
     let currPath = "";
+    let newDirection = "";
 
     // go to E
     for (const [key, value] of map.entries()) {
@@ -57,10 +58,11 @@ exports.travelling_suisse_robot = (input) => {
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;
                 currPath = pathString
-                currDirection = path(map.get("D"), map.get(key), currDirection)[0];
+                newDirection = path(map.get("D"), map.get(key), currDirection)[0];
             }
         }
     }
+    currDirection = newDirection;
     prevNode = currNode;
     output += currPath;
     currPath = "";
@@ -72,10 +74,11 @@ exports.travelling_suisse_robot = (input) => {
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;
                 currPath = pathString
-                currDirection = path(map.get(prevNode), map.get(key), currDirection)[0];
+                newDirection = path(map.get(prevNode), map.get(key), currDirection)[0];
             }
         }
     }
+    currDirection = newDirection;
     prevNode = currNode;
     output += currPath;
     currPath = "";
@@ -90,13 +93,91 @@ exports.travelling_suisse_robot = (input) => {
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;
                 currPath = pathString
-                currDirection = path(map.get(prevNode), map.get(key), currDirection)[0];
+                newDirection = path(map.get("T"), map.get(key), currDirection)[0];
             }
-
-            console.log(currDirection)
-            console.log(pathString)
         }
     }
+    currDirection = newDirection;
+    prevNode = currNode;
+    output += currPath;
+    currPath = "";
+
+    // go to U
+    for (const [key, value] of map.entries()) {
+        if (key.includes("U")) {
+            let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
+            if (pathString.length < currPath.length || currPath == "") {
+                currNode = key;
+                currPath = pathString
+                newDirection = path(map.get(prevNode), map.get(key), currDirection)[0];
+            }
+        }
+    }
+    currDirection = newDirection;
+    prevNode = currNode;
+    output += currPath;
+    currPath = "";
+
+    // go to I
+    for (const [key, value] of map.entries()) {
+        if (key.includes("I")) {
+            let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
+            if (pathString.length < currPath.length || currPath == "") {
+                currNode = key;
+                currPath = pathString
+                newDirection = path(map.get(prevNode), map.get(key), currDirection)[0];
+            }
+        }
+    }
+    currDirection = newDirection;
+    prevNode = currNode;
+    output += currPath;
+    currPath = "";
+
+    // go to S
+    for (const [key, value] of map.entries()) {
+        if (key.includes("S")) {
+            let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
+            if (pathString.length < currPath.length || currPath == "") {
+                currNode = key;
+                currPath = pathString
+                newDirection = path(map.get(prevNode), map.get(key), currDirection)[0];
+            }
+        }
+    }
+    currDirection = newDirection;
+    prevNode = currNode;
+    output += currPath;
+    currPath = "";
+
+    // go to S
+    for (const [key, value] of map.entries()) {
+        if (key.includes("S")) {
+            let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
+            if (pathString.length < currPath.length || currPath == "") {
+                currNode = key;
+                currPath = pathString
+                newDirection = path(map.get(prevNode), map.get(key), currDirection)[0];
+            }
+        }
+    }
+    currDirection = newDirection;
+    prevNode = currNode;
+    output += currPath;
+    currPath = "";
+
+    // go to E
+    for (const [key, value] of map.entries()) {
+        if (key.includes("E")) {
+            let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
+            if (pathString.length < currPath.length || currPath == "") {
+                currNode = key;
+                currPath = pathString
+                newDirection = path(map.get(prevNode), map.get(key), currDirection)[0];
+            }
+        }
+    }
+    currDirection = newDirection;
     prevNode = currNode;
     output += currPath;
     currPath = "";

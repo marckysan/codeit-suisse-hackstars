@@ -76,4 +76,11 @@ app.post("/travelling-suisse-robot", (req, res) => {
   res.send(output);
 });
 
+// Stonks
+app.post("/stonks", (req, res) => {
+  // const { energy, capital, timeline } = req.body;
+  // const output = stonks(energy, capital, timeline);
+  res.json(req.body);
+});
+
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

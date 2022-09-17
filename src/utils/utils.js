@@ -1,3 +1,4 @@
+// ticker_stream
 exports.sortTicks = (ticks) => {
   ticks.sort((a, b) => {
     const timestampA = a.split(",")[0];
@@ -28,7 +29,8 @@ exports.generateTickerMap = (sortedTicks) => {
   return tickerMap;
 };
 
-// export default {
-//   sortTicks,
-//   generateTickerMap,
-// };
+// calendar_days
+exports.dateFromDay = (year, day) => {
+  var date = new Date(year, 0); // initialize a date in `year-01-01`
+  return new Date(date.setDate(day)); // add the number of days
+}

@@ -53,7 +53,7 @@ exports.travelling_suisse_robot = (input) => {
 
     // go to E
     for (const [key, value] of map.entries()) {
-        if (key.includes("E")) {
+        if (key.includes("E") && key != prevNode) {
             let pathString = path(map.get("D"), map.get(key), currDirection)[1];
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;
@@ -69,7 +69,7 @@ exports.travelling_suisse_robot = (input) => {
 
     // go to I
     for (const [key, value] of map.entries()) {
-        if (key.includes("I")) {
+        if (key.includes("I") && key != prevNode) {
             let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;
@@ -88,7 +88,7 @@ exports.travelling_suisse_robot = (input) => {
 
     // go to S
     for (const [key, value] of map.entries()) {
-        if (key.includes("S")) {
+        if (key.includes("S") && key != prevNode) {
             let pathString = path(map.get("T"), map.get(key), currDirection)[1];
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;
@@ -104,7 +104,7 @@ exports.travelling_suisse_robot = (input) => {
 
     // go to U
     for (const [key, value] of map.entries()) {
-        if (key.includes("U")) {
+        if (key.includes("U") && key != prevNode) {
             let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;
@@ -120,7 +120,7 @@ exports.travelling_suisse_robot = (input) => {
 
     // go to I
     for (const [key, value] of map.entries()) {
-        if (key.includes("I")) {
+        if (key.includes("I") && key != prevNode) {
             let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;
@@ -136,7 +136,7 @@ exports.travelling_suisse_robot = (input) => {
 
     // go to S
     for (const [key, value] of map.entries()) {
-        if (key.includes("S")) {
+        if (key.includes("S") && key != prevNode) {
             let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;
@@ -152,7 +152,7 @@ exports.travelling_suisse_robot = (input) => {
 
     // go to S
     for (const [key, value] of map.entries()) {
-        if (key.includes("S")) {
+        if (key.includes("S") && key != prevNode) {
             let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;
@@ -168,7 +168,7 @@ exports.travelling_suisse_robot = (input) => {
 
     // go to E
     for (const [key, value] of map.entries()) {
-        if (key.includes("E")) {
+        if (key.includes("E") && key != prevNode) {
             let pathString = path(map.get(prevNode), map.get(key), currDirection)[1];
             if (pathString.length < currPath.length || currPath == "") {
                 currNode = key;

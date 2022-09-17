@@ -34,6 +34,8 @@ exports.travelling_suisse_robot = (input) => {
         }
     }
 
+    console.log(input, graph, map)
+
     // find path
     let output = "";
     let currDirection = 1; // start facing north

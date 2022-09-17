@@ -1,7 +1,5 @@
 const rotateClockwise = (face, north, south, east, west, state) => {
-  console.log("INSIDE CLOCKWISE", face);
   if (face === "U") {
-    console.log("INSIDE CLOCKWISE KEY U");
     const temp = JSON.parse(JSON.stringify(state));
     state[north][0] = temp[west][0];
     state[east][0] = temp[north][0];
@@ -23,12 +21,10 @@ const rotateClockwise = (face, north, south, east, west, state) => {
     }
   }
 
-  console.log("AFTER PROCESS INSIDE CLOCKWISE", state);
   return state;
 };
 
 const rotateAntiClockwise = (face, north, south, east, west, state) => {
-  console.log("INSIDE ANTI CLOCKWISE", face);
   if (face === "U") {
     const temp = JSON.parse(JSON.stringify(state));
     state[north][0] = temp[east][0];
@@ -50,7 +46,6 @@ const rotateAntiClockwise = (face, north, south, east, west, state) => {
       state[north][2][j] = temp[east][j][0];
     }
   }
-  console.log("AFTER PROCESS INSIDE ANTI CLOCKWISE", state);
   return state;
 };
 

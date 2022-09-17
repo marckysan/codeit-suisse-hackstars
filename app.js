@@ -45,6 +45,9 @@ app.post("/cryptocollapz", (req, res) => {
   const output = cryptocollapz(input);
   const wrappedOutput = {
     output: output,
+  };
+  res.json(wrappedOutput);
+});
 
 // calendar_days
 app.post("/calendarDays", (req, res) => {

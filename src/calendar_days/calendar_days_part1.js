@@ -27,7 +27,7 @@ exports.calendar_days_part1 = (numbers) => {
 
   for (let i = 0; i < 12; i++) {
     let monthOutput = "       ,";
-    let value = monthlyMap.get(i) ?? new Set();
+    let value = monthlyMap.get(i) || new Set();
 
     // days of the week
     for (let i = 0; i < 7; i++) {
